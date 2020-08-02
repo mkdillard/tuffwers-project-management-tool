@@ -1,5 +1,5 @@
 [package]
-name = "tuffwers-project-management-tool"
+name = "tuffwers-project-management-tool-server"
 version = "0.1.0"
 authors = ["Michael Dillard <mkdillard@hotmail.com>"]
 edition = "2018"
