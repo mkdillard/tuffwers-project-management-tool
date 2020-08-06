@@ -13,7 +13,9 @@ fn index() -> io::Result<NamedFile> {
 
 #[get("/<file..>")]
 fn files(file: PathBuf) -> Option<NamedFile> {
-    NamedFile::open(Path::new("static/").join(file)).ok()
+    NamedFile::open(Path::new("static/").join(file))
+        .or( NamedFile::open("static/index.html") )
+        .ok()
 }
 
 fn main() {
