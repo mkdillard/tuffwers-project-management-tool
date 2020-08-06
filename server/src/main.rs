@@ -1,26 +1,21 @@
 #![feature(proc_macro_hygiene, decl_macro)]
-
 #[macro_use] extern crate rocket;
-use maud::{html, Markup};
 
+use std::io;
+use std::path::{Path, PathBuf};
 
-// #[get("/")]
-// fn index() -> &'static str {
-//     "Hello, world!"
-// }
+use rocket::response::NamedFile;
 
-/// This is the entrypoint for our yew client side app.
 #[get("/")]
-fn index() -> &'static str {
-    // maud macro
-    html! {
-        //link rel="stylesheet" href="static/styles.css" {}
-        body {}
-        // yew-generated javascript attaches to <body>
-        script src=("static/index.js") {}
-    }
+fn index() -> io::Result<NamedFile> {
+    NamedFile::open("static/index.html")
+}
+
+#[get("/<file..>")]
+fn files(file: PathBuf) -> Option<NamedFile> {
+    NamedFile::open(Path::new("static/").join(file)).ok()
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![index]).launch();
+    rocket::ignite().mount("/", routes![index, files]).launch();
 }
