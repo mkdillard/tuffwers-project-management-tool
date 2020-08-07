@@ -51,8 +51,8 @@ RUN groupadd $APP_USER \
     && useradd -g $APP_USER $APP_USER \
     && mkdir -p ${APP}/static
 
-COPY --from server /tpmt/target/release/tpmt ${APP}/tpmt_server
-COPY --from client /client/dist/ ${APP}/static/
+COPY --from=server /tpmt/target/release/tpmt ${APP}/tpmt_server
+COPY --from=client /client/dist/ ${APP}/static/
 
 RUN chown -R $APP_USER:$APP_USER ${APP}
 
