@@ -43,8 +43,8 @@ RUN apt-get update \
 EXPOSE 8000
 
 ENV TZ=Etc/UTC \
-    APP_USER=appuser
-    ROCKET_PORT=$PORT
+    APP_USER=appuser \
+    ROCKET_PORT=$PORT \
     ROCKET_KEEP_ALIVE=5
 
 RUN groupadd $APP_USER \
