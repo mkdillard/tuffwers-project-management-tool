@@ -1,4 +1,6 @@
-FROM rust:1.45 AS server
+FROM rustlang/rust:nightly as server
+#FROM rust:1.45 AS server
+
 
 #Create new project
 RUN USER=root cargo new --bin tpmt
