@@ -1,0 +1,5 @@
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: ROCKET_PORT=$PORT ROCKET_KEEP_ALIVE=5 ./server.exe
