@@ -9,6 +9,13 @@ app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+
+//Server api routes
+app.get('/api/server', (req, res) => {
+    res.status(200).send("Hello Server.");
+});
+
+//Client routes
 const historyOptions = {
     index: '/'
 }
@@ -17,7 +24,7 @@ app.use(history(historyOptions));
 
 // app.use(serveStatic(path.join(__dirname, 'dist')));
 
-app.get('/index.html', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
