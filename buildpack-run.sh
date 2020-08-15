@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./scripts/assemble.sh
+./scripts/build.sh
