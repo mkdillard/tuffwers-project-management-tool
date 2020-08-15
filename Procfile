@@ -1,1 +1,1 @@
-web: ROCKET_PORT=$PORT ROCKET_KEEP_ALIVE=0 ./target/release/tuffwers-project-management-tool
+web: ROCKET_PORT=$PORT ROCKET_KEEP_ALIVE=0 ./build/server
