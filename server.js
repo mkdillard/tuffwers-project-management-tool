@@ -59,7 +59,12 @@ passport.use(new Oauth2Strategy({
         clientSecret: process.env.APP_SECRET,
         callbackURL: process.env.OAUTH_CALLBACK_URL
     }, function (accessToken, refreshToken, profile, done) {
-
+        console.log('accessToken');
+        console.log(accessToken);
+        console.log('refreshToken');
+        console.log(refreshToken);
+        console.log('profile');
+        console.log(profile);
         done(null, profile);
     })
 );
@@ -78,11 +83,11 @@ passport.deserializeUser((req, user, done) => {
     done(null, {});
 })
 
-app.get('/login', passport.authenticate('oauth2', swc_scopes), (req, res) => {
+app.get('/login', passport.authenticate('oauth2', { successRedirect: '/', scope: swc_scopes.scope }), (req, res) => {
     console.log('Logging into TPMT');
 });
 
-app.get('/oauth2callback', passport.authenticate('oauth2', swc_scopes), (req, res) => {
+app.get('/oauth2callback', passport.authenticate('oauth2', { successRedirect: '/', failureRedirect: '/login', scope: swc_scopes.scope }), (req, res) => {
     console.log('In oauth callback');
     req.session.user = req.user;
     res.redirect('/');
