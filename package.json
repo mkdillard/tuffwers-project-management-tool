@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
+    "startlocal": "env NODE_ENV=local node server.js",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
@@ -13,9 +14,15 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "connect-history-api-fallback": "^1.6.0",
+    "connect-redis": "^5.0.0",
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "ioredis": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-oauth2": "^1.5.0",
     "register-service-worker": "^1.7.1",
     "serve-static": "^1.14.1",
     "vue": "^2.6.11",
