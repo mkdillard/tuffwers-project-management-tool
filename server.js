@@ -30,7 +30,11 @@ app.use(session({
     store: new RedisStore({ client: redisClient, ttl: 8*60*60 }),
     secret: "e527c5ed-574b-4384-b359-069e14621d8e",
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 8000*60*60,
+        sameSite: 'none'
+    }
 }));
 
 //configure passport
